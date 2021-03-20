@@ -84,4 +84,7 @@ xlabel('j')
 ylabel('t')
 zlabel('x2')
 
+figure(5)
+funcion_lyapunov(x)
+
 
