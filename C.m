@@ -29,13 +29,13 @@ xi1 = x(1); % Tank level h1
 xi2 = x(2); % Tank level h2
 xi3 = x(3); % q
 
-if ((xi1 < h0) && (xi2 < h0))
+if ((xi3 == 1) && (xi1 < h0) && (xi2 < h0))
     v = 1;
-elseif ((xi1 >= h0) && (xi2 < h0))
+elseif ((xi3 == 2) && (xi1 >= h0) && (xi2 < h0))
     v = 1;
-elseif ((xi1 < h0) && (xi2 >= h0))
+elseif ((xi3 == 3) && (xi1 < h0) && (xi2 >= h0))
     v = 1;
-elseif ((xi1 >= h0) && (xi2 >= h0))
+elseif ((xi3 == 4) && (xi1 >= h0) && (xi2 >= h0))
     v = 1;
 else 
     v = 0;
