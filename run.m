@@ -53,32 +53,35 @@ x3 = x(:,3);
 % plot solutions
 figure(1)
 clf
-subplot(2,1,1),plotflows(t,j,x(:,1))
+plot(t, x(:,1),'r', t, x(:,2),'b')
 grid on
-ylabel('H1')
- 
-subplot(2,1,2),plotjumps(t,j,x(:,1))
-grid on
-ylabel('x1')
- 
-figure(2)
-clf
-subplot(2,1,1),plotflows(t,j,x(:,2))
-grid on
-ylabel('H2')
- 
-subplot(2,1,2),plotjumps(t,j,x(:,2))
-grid on
-ylabel('x2')
+xlabel('Tiempo (s)')
+ylabel('Altura (m)')
+legend('h1', 'h2')
 
-figure(3)
+figure(2)
 clf
 subplot(2,1,1),plotflows(t,j,x(:,3))
 grid on
+xlabel('Saltos (j)')
 ylabel('Estados')
  
 subplot(2,1,2),plotjumps(t,j,x(:,3))
 grid on
 ylabel('x3')
 
-save('x.mat', 'x')
+
+% plot hybrid arc
+figure(3)
+plotHybridArc(t,j,x(:,1))
+xlabel('j')
+ylabel('t')
+zlabel('x1')
+
+figure(4)
+plotHybridArc(t,j,x(:,2))
+xlabel('j')
+ylabel('t')
+zlabel('x2')
+
+
