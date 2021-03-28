@@ -21,6 +21,7 @@ ly_dot = [];
 
 for i = 1 : length(x1)
     lya = 0.5*x1(i)^2 + 0.5*x2(i)^2;
+    %x1^2 + x2^2 +2*x1*x2
     lya_dot = x1(i) + x2(i);
     ly = [ly, lya];
     ly_dot = [ly_dot, lya_dot];
