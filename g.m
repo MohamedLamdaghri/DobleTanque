@@ -8,7 +8,7 @@ function xplus = g(x)
 %
 % Filename: g.m
 %
-% Version 1.0
+% Version 1.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % jump map: xplus = g(x,u,parameters);
 
@@ -19,17 +19,17 @@ global hmax;
 global A;
 global grav;
 global Q;
-global u1;
-global u2;
-global u3;
-global up1;
-global d1;
-global d2;
 
 % State
 xi1 = x(1); % Tank level h1
 xi2 = x(2); % Tank level h2
 xi3 = x(3); % q
+xi4 = x(4); % u1
+xi5 = x(5); % u2
+xi6 = x(6); % u3
+xi7 = x(7); % up1
+xi8 = x(8); % d1
+xi9 = x(9); % d2
 
 xi1plus = xi1;
 xi2plus = xi2;
@@ -51,4 +51,20 @@ elseif ((xi3 == 4) && (xi1 < h0))
     xi3plus = 3;
 end
 
-xplus = [xi1plus; xi2plus; xi3plus];
+if (xi2 > h0)
+    xi4plus = 0;
+    xi5plus = 0;
+    xi6plus = 0;
+    xi7plus = 0;
+    xi8plus = 1;
+else
+    xi4plus = xi4;
+    xi5plus = xi5;
+    xi6plus = xi6;
+    xi7plus = xi7;
+    xi8plus = xi8;
+end
+
+xi9plus = xi9;
+
+xplus = [xi1plus; xi2plus; xi3plus; xi4plus; xi5plus; xi6plus; xi7plus; xi8plus; xi9plus];

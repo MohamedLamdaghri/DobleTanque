@@ -7,7 +7,7 @@
 %
 % Filename: run.m
 %
-% Version 1.0
+% Version 1.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear all
@@ -19,21 +19,15 @@ hmax = 0.6;
 A = 0.0154;
 grav = 9.81;
 Q = 0.1e-3;
-u1 = 1;
-u2 = 1;
-u3 = 1;
-up1 = 0;
-d1 = 0;
-d2 = 0;
 
-global c h0 hmax A grav Q u1 u2 u3 up1 d1 d2 ;
+global c h0 hmax A grav Q;
 
 % initial conditions
-x0 = [0.25;0.45;3];
+x0 = [0.25;0.25;3;1;1;1;1;0;0];
  
 % simulation horizon
-TSPAN = [0 100];
-JSPAN = [0 100];
+TSPAN = [0 1000];
+JSPAN = [0 1000];
 
 % rule for jumps
 % rule = 1 -> priority for jumps
