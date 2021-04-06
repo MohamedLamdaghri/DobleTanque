@@ -14,9 +14,11 @@ function v  = D(x)
 global c;
 global h0;
 global hmax;
+global hmin;
 global A;
 global grav;
 global Q;
+global control;
 
 % State
 xi1 = x(1); % Tank level h1

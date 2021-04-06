@@ -16,9 +16,11 @@ function xplus = g(x)
 global c;
 global h0;
 global hmax;
+global hmin;
 global A;
 global grav;
 global Q;
+global control;
 
 % State
 xi1 = x(1); % Tank level h1
@@ -51,20 +53,37 @@ elseif ((xi3 == 4) && (xi1 < h0))
     xi3plus = 3;
 end
 
-if (xi2 > h0)
-    xi4plus = 0;
-    xi5plus = 0;
-    xi6plus = 0;
-    xi7plus = 0;
-    xi8plus = 1;
-else
-    xi4plus = xi4;
-    xi5plus = xi5;
-    xi6plus = xi6;
-    xi7plus = xi7;
-    xi8plus = xi8;
+if (control == 1)
+    if (xi2 > h0)
+        xi4plus = 0;
+        xi5plus = 0;
+        xi6plus = 0;
+        xi7plus = 0;
+        xi8plus = 1;
+    else
+        xi4plus = xi4;
+        xi5plus = xi5;
+        xi6plus = xi6;
+        xi7plus = xi7;
+        xi8plus = xi8;
+    end
+    xi9plus = xi9;
+elseif (control == 2)
+    if (((xi1 || xi2) > hmax) || ((xi1 || xi2) < hmin))
+        xi7plus = 1 - xi7;
+        xi4plus = xi4;
+        xi5plus = xi5;
+        xi6plus = xi6;
+        xi8plus = xi8;
+        xi9plus = xi9; 
+    else
+        xi7plus = xi7;
+        xi4plus = xi4;
+        xi5plus = xi5;
+        xi6plus = xi6;
+        xi8plus = xi8;
+        xi9plus = xi9; 
+    end   
 end
-
-xi9plus = xi9;
 
 xplus = [xi1plus; xi2plus; xi3plus; xi4plus; xi5plus; xi6plus; xi7plus; xi8plus; xi9plus];

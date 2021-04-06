@@ -15,15 +15,19 @@ clear all
 %constants
 c = 3.6e-5;
 h0 = 0.3;
-hmax = 0.6;
+hmax = 0.5;
+hmin = 0.2;
 A = 0.0154;
 grav = 9.81;
 Q = 0.1e-3;
+control = 0;
 
-global c h0 hmax A grav Q;
+global c h0 hmax hmin A grav Q control;
 
+control = menu('Tipo de Control', 'Forzar a estado 3', 'Control de Nivel');
+display(control);
 % initial conditions
-x0 = [0.25;0.25;3;1;1;1;1;0;0];
+x0 = [0.25;0.45;3;1;1;1;1;0;0];
  
 % simulation horizon
 TSPAN = [0 1000];
@@ -43,6 +47,12 @@ options = odeset('RelTol',1e-6,'MaxStep',.1);
 x1 = x(:,1);
 x2 = x(:,2);
 x3 = x(:,3);
+x4 = x(:,4);
+x5 = x(:,5);
+x6 = x(:,6);
+x7 = x(:,7);
+x8 = x(:,8);
+x9 = x(:,9);
 
 % plot solutions
 figure(1)
