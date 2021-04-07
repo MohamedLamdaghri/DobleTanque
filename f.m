@@ -35,6 +35,23 @@ xi9 = x(9); % d2
 % flow map
 %xdot=f(x,u);
 
+%control
+if (control == 1)
+    if (xi2 > h0)
+        xi4 = 0;
+        xi5 = 0;
+        xi6 = 0;
+        xi7 = 0;
+        xi8 = 1;
+    end
+elseif (control == 2)
+    if ((xi1 > hmax) || (xi2 > hmax))
+        xi7 = 0;
+    elseif ((xi1 < hmin) || (xi2 < hmin))
+        xi7 = 1;
+    end   
+end
+
 Q12_V2 = c*sign(xi1 - xi2)*sqrt(2*grav*abs(xi1 - xi2))*xi5;
 QN_V3 = c*sqrt(2*grav*xi2)*xi6;
 QL_V1L = c*sqrt(2*grav*xi1)*xi8;

@@ -27,7 +27,7 @@ global c h0 hmax hmin A grav Q control;
 control = menu('Tipo de Control', 'Forzar a estado 3', 'Control de Nivel');
 display(control);
 % initial conditions
-x0 = [0.25;0.45;3;1;1;1;1;0;0];
+x0 = [0.25;0.25;1;1;1;1;0;0;0];
  
 % simulation horizon
 TSPAN = [0 1000];
@@ -90,3 +90,4 @@ zlabel('x2')
 
 figure(5)
 function_lyapunov(x)
+
